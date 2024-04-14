@@ -25,23 +25,32 @@ class player2(gamebo):
             self.rect.y -= 7
         if kn[K_d] and self.rect.y < 950:
             self.rect.y += 7
-class player(gamebo):
+class player3(gamebo):
     def move(self):
     
         self.ris()
         kn = key.get_pressed()
-        if kn[K_UP] and self.rect.y > 0:
+        if kn[K_UP]  and self.rect.y > 0:
             self.rect.y -= 7
         if kn[K_DOWN] and self.rect.y < 950:
             self.rect.y += 7
+class ball(gamebo):
+    def move3(self):
+        self.ris()
+        far = 
+        
+
+
+
 ship = player('стена.png',100,200,20,40)
 ship2 = player2('стена.png',1100,200,20,40)
+ball = player3('мяч.png', 600,300,30,30)
 while game:
     for e in event.get():
         if e.type == QUIT:
             game = False
         
-    okno.fill((0,0,0)) 
+    okno.fill((32,178,170)) 
     #hp = wr.render(str(health), False, (255,0,9))
     #pp = wr.render(str(points),False,(200,100,44))
     #okno.blit(hp, (1100,40))
