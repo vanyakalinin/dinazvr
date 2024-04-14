@@ -16,6 +16,15 @@ class gamebo(sprite.Sprite):
         self.lasty = self.rect.y
     def ris(self):
         okno.blit(self.image, (self.rect.x, self.rect.y))
+class player2(gamebo):
+    def move2(self):
+    
+        self.ris()
+        kn = key.get_pressed()
+        if kn[K_w] and self.rect.y > 0:
+            self.rect.y -= 7
+        if kn[K_d] and self.rect.y < 950:
+            self.rect.y += 7
 class player(gamebo):
     def move(self):
     
@@ -25,4 +34,19 @@ class player(gamebo):
             self.rect.y -= 7
         if kn[K_DOWN] and self.rect.y < 950:
             self.rect.y += 7
-ship = player('rocket.png',480,540,50,50)
+ship = player('стена.png',100,200,20,40)
+ship2 = player2('стена.png',1100,200,20,40)
+while game:
+    for e in event.get():
+        if e.type == QUIT:
+            game = False
+        if e.type == KEYUP:
+    okno.fill((0,0,0)) 
+    hp = wr.render(str(health), False, (255,0,9))
+    pp = wr.render(str(points),False,(200,100,44))
+    okno.blit(hp, (1100,40))
+    okno.blit(pp, (1100,80))
+    b.fly()
+    
+    fps.tick(60)
+    display.update()
