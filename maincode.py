@@ -5,7 +5,8 @@ okno = display.set_mode((1200,600))
  
 fps = time.Clock() #контроль fps
 game = True
-
+font.init()
+wr = font.Font(None,30)
 
 class gamebo(sprite.Sprite):
     def __init__(self, img, x,y,w,h):
@@ -82,10 +83,10 @@ while game:
             fary = fary + 2 
         if gag == 3:
             fary == fary - 2
-    #hp = wr.render(str(health), False, (255,0,9))
-    #pp = wr.render(str(points),False,(200,100,44))
-    #okno.blit(hp, (1100,40))
-    #okno.blit(pp, (1100,80))
+    
+    pp = wr.render(str(points),False,(200,100,44))
+    
+    okno.blit(pp, (1100,80))
     #b.fly()
     
     fps.tick(60)
