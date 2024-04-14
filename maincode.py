@@ -40,13 +40,13 @@ while game:
     for e in event.get():
         if e.type == QUIT:
             game = False
-        if e.type == KEYUP:
+        
     okno.fill((0,0,0)) 
-    hp = wr.render(str(health), False, (255,0,9))
-    pp = wr.render(str(points),False,(200,100,44))
-    okno.blit(hp, (1100,40))
-    okno.blit(pp, (1100,80))
-    b.fly()
+    #hp = wr.render(str(health), False, (255,0,9))
+    #pp = wr.render(str(points),False,(200,100,44))
+    #okno.blit(hp, (1100,40))
+    #okno.blit(pp, (1100,80))
+    #b.fly()
     
     fps.tick(60)
     display.update()
