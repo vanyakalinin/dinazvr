@@ -23,7 +23,7 @@ class player2(gamebo):
         kn = key.get_pressed()
         if kn[K_w] and self.rect.y > 0:
             self.rect.y -= 7
-        if kn[K_d] and self.rect.y < 950:
+        if kn[K_s] and self.rect.y < 950:
             self.rect.y += 7
 class player(gamebo):
     def move(self):
@@ -41,7 +41,12 @@ while game:
         if e.type == QUIT:
             game = False
         
-    okno.fill((0,0,0)) 
+    okno.fill((0,0,0))
+    ship.ris()
+    ship2.ris()
+    ship.move()
+    ship2.move2()
+ 
     #hp = wr.render(str(health), False, (255,0,9))
     #pp = wr.render(str(points),False,(200,100,44))
     #okno.blit(hp, (1100,40))
