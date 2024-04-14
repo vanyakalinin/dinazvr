@@ -21,7 +21,8 @@ class player(gamebo):
     
         self.ris()
         kn = key.get_pressed()
-        if kn[K_LEFT] and self.rect.x > 0:
-            self.rect.x -= 7
-        if kn[K_RIGHT] and self.rect.x < 950:
-            self.rect.x += 7
+        if kn[K_UP] and self.rect.y > 0:
+            self.rect.y -= 7
+        if kn[K_DOWN] and self.rect.y < 950:
+            self.rect.y += 7
+ship = player('rocket.png',480,540,50,50)
