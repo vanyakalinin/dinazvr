@@ -7,8 +7,8 @@ okno = display.set_mode((1200,600))
 fps = time.Clock() #контроль fps
 game = True
 font.init()
-wr = font.Font(None,100)
-fr = font.Font(None,30)
+wr = font.Font('shir.ttf',125)
+fr = font.Font('shir.ttf',30)
 class wall(sprite.Sprite):
     def __init__(self, x,y,w,h):
         self.image = Surface((w,h))
@@ -22,7 +22,7 @@ class wall(sprite.Sprite):
 
     
 steni = [
-    wall(0,0,1200,10), wall(0,550,1200,10),wall(0,0,10,600),wall(1200,0,10,600)   
+    wall(0,0,1200,10), wall(0,590,1200,10)   
 ]
 
 class gamebo(sprite.Sprite):
@@ -43,7 +43,7 @@ class player2(gamebo):
         kn = key.get_pressed()
         if kn[K_w] and self.rect.y > 0:
             self.rect.y -= 10
-        if kn[K_s] and self.rect.y < 600:
+        if kn[K_s] and self.rect.y < 510:
             self.rect.y += 10
 class player(gamebo):
     def move(self):
@@ -52,13 +52,13 @@ class player(gamebo):
         kn = key.get_pressed()
         if kn[K_UP] and self.rect.y > 0:
             self.rect.y -= 10
-        if kn[K_DOWN] and self.rect.y < 600:
+        if kn[K_DOWN] and self.rect.y < 510:
             self.rect.y += 10
 farx = 5
 fary = 3
-ship = player('стена.png',0,200,50,90)
-ship2 = player2('стена.png',1150,200,50,90)
-health = 'game over'
+ship = player('стена.png',10,200,30,120)
+ship2 = player2('стена.png',1160,200,30,120)
+health = 'GAME OVER'
 points = 0
 
 
@@ -113,18 +113,18 @@ while game:
                 if ball.rect.y < 300:
                     fary = 3
     if ball.rect.x > 1200 or ball.rect.x <0:
-       hp = wr.render(str(health), False, (255,0,9))
-       okno.blit(hp, (600,300))
+       hp = wr.render(str(health), False, (139, 0, 0))
+       okno.blit(hp, (225,200))
        hah = False
        
          
-    raepoints += 2
+    raepoints += 1
     if raepoints == 50 and hah == True:
     
         points += 1
         raepoints = 0
     
-    pp = fr.render(str(points),False,(200,100,44))
+    pp = fr.render(str(points),False,(255, 165, 0))
     
     okno.blit(pp, (1100,80))
 
