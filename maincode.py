@@ -1,12 +1,14 @@
 from pygame import *
 from random import *
 
+
 okno = display.set_mode((1200,600))
  
 fps = time.Clock() #контроль fps
 game = True
 font.init()
-wr = font.Font(None,30)
+wr = font.Font(None,100)
+fr = font.Font(None,30)
 class wall(sprite.Sprite):
     def __init__(self, x,y,w,h):
         self.image = Surface((w,h))
@@ -56,6 +58,8 @@ farx = 5
 fary = 3
 ship = player('стена.png',0,200,50,90)
 ship2 = player2('стена.png',1150,200,50,90)
+health = 'game over'
+points = 0
 
 
 class player3(gamebo):
@@ -66,7 +70,8 @@ class player3(gamebo):
         self.rect.x += farx
         self.rect.y += fary
 ball = player3('мяч.png', 600,300,30,30)
-
+raepoints = 0
+hah = True
 while game:
     for e in event.get():
         if e.type == QUIT:
@@ -85,21 +90,21 @@ while game:
     ball.move()
     if sprite.collide_rect(ball, ship):
         farx = 5
-        gag = randint(1, 3)
-        if gag == 1:
-            fary = 0
+        gag = randint(1, 2)
+        #if gag == 1:
+            #fary = 0
         if gag == 2:
             fary = -3
-        if gag == 3:
+        if gag == 1:
             fary == 3
     if sprite.collide_rect(ball, ship2):
         farx = -5
-        gag = randint(1, 3)
-        if gag == 1:
-            fary = 0
+        gag = randint(1, 2)
+        #if gag == 1:
+            #fary = 0
         if gag == 2:
             fary = -3 
-        if gag == 3:
+        if gag == 1:
             fary == 3
     for w in steni:
             if sprite.collide_rect(ball,w):
@@ -107,6 +112,21 @@ while game:
                     fary = -3
                 if ball.rect.y < 300:
                     fary = 3
+    if ball.rect.x > 1200 or ball.rect.x <0:
+       hp = wr.render(str(health), False, (255,0,9))
+       okno.blit(hp, (600,300))
+       hah = False
+       
+         
+    raepoints += 2
+    if raepoints == 50 and hah == True:
+    
+        points += 1
+        raepoints = 0
+    
+    pp = fr.render(str(points),False,(200,100,44))
+    
+    okno.blit(pp, (1100,80))
 
                
                 
